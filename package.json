@@ -1,0 +1,17 @@
+{
+  "name": "muuv-backend-assignment",
+  "version": "1.0.0",
+  "description": "Muuv Backend Coding Assignment",
+  "main": "src/index.js",
+  "author": "Christian Roy <christian@muuvlabs.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
