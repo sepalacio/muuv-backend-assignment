@@ -19,14 +19,9 @@ const getUrl = ({ host, version, language }, path) => (
  * @param {object} options.data request data
  * @return {Promise<Object>}
  */
-const MovieDatabase = async ({ method, path, data }) => {
+const MovieDatabase = async ({ method, path }) => {
   const url = getUrl(movieDatabaseConfig, path);
-
-  const { data: response } = await axios({
-    method,
-    url,
-    data,
-  });
+  const { data: response } = await axios({ method, url });
 
   return response;
 };

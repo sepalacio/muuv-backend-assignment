@@ -1,10 +1,11 @@
 # Muuv Coding Assignment
 
-__Writing what this project does...__
+**Writing what this project does...**
 
 ## Tools
+
 - Jest for testing
-- __List additional tools you used...__
+- **List additional tools you used...**
 
 ## Getting Started
 
@@ -24,6 +25,10 @@ Run all tests once:
 npm test
 ```
 
+## API DOCS
+
+### [Actors](src/api/actors/docs/ACTORS.md)
+
 ### How to use
 
-__Describe how to use the project: starting the server, using endpoints, etc.__
+**Describe how to use the project: starting the server, using endpoints, etc.**
