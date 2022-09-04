@@ -2,7 +2,7 @@
   "name": "muuv-backend-assignment",
   "version": "1.0.0",
   "description": "Muuv Backend Coding Assignment",
-  "main": "src/index.js",
+  "main": "app.js",
   "author": "Christian Roy <christian@muuvlabs.com>",
   "license": "MIT",
   "engines": {
@@ -10,7 +10,7 @@
     "node": "16.14.0"
   },
   "scripts": {
-    "start": "nodemon ./src/index.js",
+    "start": "nodemon ./src/server/server.js",
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "jest"
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "chalk": "^5.0.1",
+    "chalk": "^4.1.0",
     "debug": "^4.3.4",
     "express": "^4.18.1"
   },
