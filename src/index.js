@@ -1,9 +1,7 @@
 const axios = require('axios').default;
 
-const sayHey = (name) => {
-    return `Hey ${name}`
-}
+const sayHey = (name) => `Hey ${name}`;
 
 module.exports = {
-    sayHey
-}
+  sayHey,
+};

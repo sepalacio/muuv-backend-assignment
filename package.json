@@ -10,6 +10,9 @@
     "node": "16.14.0"
   },
   "scripts": {
+    "start": "nodemon ./src/index.js",
+    "lint": "eslint .",
+    "pretest": "npm run lint",
     "test": "jest"
   },
   "devDependencies": {
