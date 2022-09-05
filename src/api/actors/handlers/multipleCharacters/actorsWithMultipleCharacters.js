@@ -1,7 +1,7 @@
 const MovieDatabase = require('../../../../lib/movieDatabase');
 const errorHandler = require('../../../../utils/errorHandler');
+const swapObjectProps = require('../../../../utils/swapObjectProps');
 const { Movies } = require('../../../../data');
-const formatMovies = require('./formatMovies');
 const filterByAppearances = require('./filterByAppearances');
 
 const getMovieIds = (movieList) => Object.keys(movieList);
@@ -22,7 +22,7 @@ const sendResponse = (res, actors) => res.status(200).json(actors);
 */
 const getActorsWithMultipleCharacters = async (req, res, next) => {
   try {
-    const movieList = formatMovies(Movies);
+    const movieList = swapObjectProps(Movies);
     const moviesIds = getMovieIds(movieList);
     const movieDetailRequests = moviesIds.map(getMovieDetailRequest);
     const movieDetails = await resolveMoviesDetails(movieDetailRequests);
