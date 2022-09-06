@@ -6,7 +6,7 @@ const existsInMoreThanOneMovie = (actor) => {
   const slashRegex = /\//;
   const minAppearances = 2;
 
-  return actor.character.split(slashRegex, minAppearances).length > 1;
+  return actor.character?.split(slashRegex, minAppearances).length > 1;
 };
 
 const hasMultipleAppearances = (actor) => isKnownActor(actor) && existsInMoreThanOneMovie(actor);
