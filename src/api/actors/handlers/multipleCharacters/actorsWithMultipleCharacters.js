@@ -1,8 +1,13 @@
+const NodeCache = require('node-cache');
+
 const MovieDatabase = require('../../../../lib/movieDatabase');
 const errorHandler = require('../../../../utils/errorHandler');
 const swapObjectProps = require('../../../../utils/swapObjectProps');
 const { Movies } = require('../../../../data');
 const filterByAppearances = require('./filterByAppearances');
+
+const cacheExpiryTime = 3600;
+const Cache = new NodeCache();
 
 const getMovieIds = (movieList) => Object.keys(movieList);
 
@@ -22,11 +27,16 @@ const sendResponse = (res, actors) => res.status(200).json(actors);
 */
 const getActorsWithMultipleCharacters = async (req, res, next) => {
   try {
-    const movieList = swapObjectProps(Movies);
-    const moviesIds = getMovieIds(movieList);
-    const movieDetailRequests = moviesIds.map(getMovieDetailRequest);
-    const movieDetails = await resolveMoviesDetails(movieDetailRequests);
-    const actors = movieDetails.reduce(filterByAppearances(movieList), {});
+    let actors = Cache.get('actorsMultipleCharacters');
+
+    if (!actors) {
+      const movieList = swapObjectProps(Movies);
+      const moviesIds = getMovieIds(movieList);
+      const movieDetailRequests = moviesIds.map(getMovieDetailRequest);
+      const movieDetails = await resolveMoviesDetails(movieDetailRequests);
+      actors = movieDetails.reduce(filterByAppearances(movieList), {});
+      Cache.set('actorsMultipleCharacters', actors, cacheExpiryTime);
+    }
 
     sendResponse(res, actors);
   } catch (error) {
