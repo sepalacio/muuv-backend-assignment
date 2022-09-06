@@ -16,22 +16,22 @@ describe('GET /actors', () => {
         expect(response.body).toEqual({
           'Chris Evans': [
             {
-              movieName: 'Captain America: The First Avenger',
-              characterName: 'Steve Rogers / Captain America',
-            },
-            {
               movieName: 'Fantastic Four (2005)',
               characterName: 'Johnny Storm / Human Torch',
+            },
+            {
+              movieName: 'Captain America: The First Avenger',
+              characterName: 'Steve Rogers / Captain America',
             },
           ],
           'Michael B. Jordan': [
             {
-              movieName: 'Fantastic Four (2015)',
-              characterName: 'Johnny Storm / The Human Torch',
-            },
-            {
               movieName: 'Black Panther',
               characterName: "N'Jadaka / Erik 'Killmonger' Stevens",
+            },
+            {
+              movieName: 'Fantastic Four (2015)',
+              characterName: 'Johnny Storm / The Human Torch',
             },
           ],
         });

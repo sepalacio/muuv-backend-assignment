@@ -1,6 +1,9 @@
-const { Actors } = require('../../../../data');
+const knownActors = [
+  'Chris Evans',
+  'Michael B. Jordan',
+];
 
-const isKnownActor = (actor) => Actors.includes(actor.name);
+const isKnownActor = (actor) => knownActors.includes(actor.name);
 
 const existsInMoreThanOneMovie = (actor) => {
   const slashRegex = /\//;

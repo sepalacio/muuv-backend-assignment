@@ -8,8 +8,11 @@ const filterByAppearances = require('./filterByAppearances');
 
 const cacheExpiryTime = 3600;
 const Cache = new NodeCache();
+const selectedMoviesIds = ['1771', '166424', '284054', '9738'];
 
 const getMovieIds = (movieList) => Object.keys(movieList);
+
+const isSelectedMovie = (movieId) => selectedMoviesIds.includes(movieId);
 
 const getMovieDetailRequest = (movieId) => MovieDatabase({
   method: 'get',
@@ -31,7 +34,7 @@ const getActorsWithMultipleCharacters = async (req, res, next) => {
 
     if (!actors) {
       const movieList = swapObjectProps(Movies);
-      const moviesIds = getMovieIds(movieList);
+      const moviesIds = getMovieIds(movieList).filter(isSelectedMovie);
       const movieDetailRequests = moviesIds.map(getMovieDetailRequest);
       const movieDetails = await resolveMoviesDetails(movieDetailRequests);
       actors = movieDetails.reduce(filterByAppearances(movieList), {});

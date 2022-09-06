@@ -1,36 +1,9 @@
 const nock = require('nock');
-const { Movies } = require('../../../src/data');
-const swapObjectProps = require('../../../src/utils/swapObjectProps');
 
 const { MOVIE_DATABASE_API_KEY: apiKey } = process.env;
-
-const castSample = {
-  id: 1234,
-  cast: [
-    {
-      name: 'Ioan Gruffudd',
-      character: 'Reed Richards / Mr. Fantastic',
-    },
-  ],
-};
+const selectedMoviesIds = ['1771', '166424', '284054', '9738'];
 
 const movieCreditsResponses = [
-  castSample,
-  castSample,
-  {
-    id: 1771, // Captain America: The First Avenger
-    cast: [
-      {
-        name: 'Chris Evans',
-        character: 'Steve Rogers / Captain America',
-      },
-      {
-        name: 'Hugo Weaving',
-        character: 'Johann Schmidt / Red Skull',
-      },
-    ],
-  },
-  castSample,
   {
     id: 9738, // Fantastic Four (2005)
     cast: [
@@ -44,15 +17,19 @@ const movieCreditsResponses = [
       },
     ],
   },
-  castSample,
-  castSample,
-  castSample,
-  castSample,
-  castSample,
-  castSample,
-  castSample,
-  castSample,
-  castSample,
+  {
+    id: 1771, // Captain America: The First Avenger
+    cast: [
+      {
+        name: 'Chris Evans',
+        character: 'Steve Rogers / Captain America',
+      },
+      {
+        name: 'Hugo Weaving',
+        character: 'Johann Schmidt / Red Skull',
+      },
+    ],
+  },
   {
     id: 166424, // Fantastic Four (2015)
     cast: [
@@ -62,10 +39,6 @@ const movieCreditsResponses = [
       },
     ],
   },
-  castSample,
-  castSample,
-  castSample,
-  castSample,
   {
     id: 284054, // Black Panther
     cast: [
@@ -79,12 +52,6 @@ const movieCreditsResponses = [
       },
     ],
   },
-  castSample,
-  castSample,
-  castSample,
-  castSample,
-  castSample,
-  castSample,
 ];
 
 const movieCreditsNock = (movieId, index) => {
@@ -98,11 +65,7 @@ const movieCreditsNock = (movieId, index) => {
     .reply(200, mockResponse);
 };
 
-const setupCreditsNock = () => {
-  const movieList = swapObjectProps(Movies);
-  const moviesIds = Object.keys(movieList);
-  moviesIds.map(movieCreditsNock);
-};
+const setupCreditsNock = () => selectedMoviesIds.map(movieCreditsNock);
 
 module.exports = {
   setupCreditsNock,
