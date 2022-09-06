@@ -4,7 +4,6 @@ const { NODE_ENV, MUUV_PORT } = process.env;
 
 const config = {
   port: MUUV_PORT || 7000,
-  apiPrefix: '/api/v1',
 };
 
 const printServerConfig = () => (

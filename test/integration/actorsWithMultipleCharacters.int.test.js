@@ -5,11 +5,11 @@ const { setupCreditsNock } = require('./fixtures/theMovieDatabaseApi');
 const app = require('../../src/app');
 
 describe('GET /actors', () => {
-  it('GET /actors/multipleCharacters => actors with multiple Marvel characters', async () => {
+  it('GET /actorsWithMultipleCharacters => actors with multiple Marvel characters', async () => {
     setupCreditsNock();
 
     await request(app)
-      .get('/api/v1/actors/multipleCharacters')
+      .get('/actorsWithMultipleCharacters')
       .expect('Content-Type', /json/)
       .expect(200)
       .then((response) => {

@@ -5,6 +5,6 @@ const getActorsWithMultipleCharacters = require('./handlers/multipleCharacters')
 const actors = express.Router();
 
 actors
-  .get('/actors/multipleCharacters', getActorsWithMultipleCharacters);
+  .get('/actorsWithMultipleCharacters', getActorsWithMultipleCharacters);
 
 module.exports = actors;

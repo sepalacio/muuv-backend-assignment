@@ -1,4 +1,4 @@
-### GET `/api/v1/actors/multipleCharacters`
+### GET `/actorsWithMultipleCharacters`
 
 > Get Actors who played more than one character in a single movie
 

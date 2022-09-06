@@ -69,7 +69,7 @@ The server requires [Node.js](https://nodejs.org/en/) v16.\* to be installed.
 
 ```shell
 curl --request GET \
-  --url 'http://localhost:7000/api/v1/actors/multipleCharacters' \
+  --url 'http://localhost:7000/actorsWithMultipleCharacters' \
   --header 'Content-Type: application/json;charset=utf-8'
 ```
 
